@@ -105,8 +105,8 @@ public class MenuManager {
 					System.out.println("Assignment Name : " + assignName);
 					System.out.println("Submission Date : " + deadline);
 					System.out.println("Assignment Score : " + score);
-					System.out.println("Continue? Input one number(YES : 1 / NO : 0): ");
 					
+					System.out.println("Continue? Input one number(YES : 1 / NO : 0): ");
 					answer = input.nextInt();
 					if(answer == 1) { 
 						continue;
