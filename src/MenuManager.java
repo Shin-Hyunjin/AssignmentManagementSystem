@@ -9,10 +9,7 @@ public class MenuManager {
 		int answer;
 		Scanner input = new Scanner(System.in);
 		
-		// test   ///test  //test
-		
-		
-		
+				
 		while(menuNum != 6) {
 			System.out.println("");
 			System.out.println("*** Assignment Management System Menu ***");
