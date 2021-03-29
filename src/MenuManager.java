@@ -167,7 +167,6 @@ public static String[] editInfoS(String [] InfoS) {
 
 public static double editScore(double score) {
 	Scanner input = new Scanner(System.in);
-    double editScore = addScore();
 	System.out.print("Input Assignment Score : ");
 	score = input.nextDouble();
 	return score;
