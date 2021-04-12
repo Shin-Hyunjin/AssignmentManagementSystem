@@ -4,19 +4,22 @@
 		
 		public static void main(String[] args) {
 			int menuNum = 0;
-			String [] assignInfo = {"no assignment","no assignment","no assignment","0"};
-			double score = 0.0;
 			Scanner input = new Scanner(System.in);
 			AssignmentManager assignmentManager = new AssignmentManager(input); 
-			Assignment assignment = new Assignment();
 			
 			while(menuNum != 5) {
-				assignment.ViewMenu();
+				System.out.println("");
+				System.out.println("*** Assignment Management System Menu ***");
+				System.out.println("1. Add Assignment");
+				System.out.println("2. Submitted Assignment");
+				System.out.println("3. Edit Assignment");
+				System.out.println("4. View Assignments");
+				System.out.println("5. Exit");
+				System.out.print("Select one number between 1 - 5 : ");
 				menuNum = input.nextInt();
 	            
 				if(menuNum == 1) {
-					assignInfo = assignmentManager.addInfoS(); 
-					score = assignmentManager.addScore();
+					assignmentManager.addAssignment();
 					
 					if(assignmentManager.ifContinue() == 1) { 
 						continue;
@@ -26,7 +29,8 @@
 
 
 				else if(menuNum == 2) {
-					assignmentManager.submittedAssignments();
+					assignmentManager.submittedAssignment();
+					
 					if(assignmentManager.ifContinue() == 1) { 
 						continue;
 					}
@@ -35,34 +39,23 @@
 				}
 
 				else if(menuNum == 3) {
-					assignment.printinfoEdit();
-					int editNum = input.nextInt();
-
-					if(editNum != 5) {
-						assignInfo = assignmentManager.editInfoS(assignInfo);
-					} 
-					else score = assignmentManager.editScore(score); 
-
-					
+					assignmentManager.editAssignment();
 					
 					if(assignmentManager.ifContinue() == 1) { 
 						continue;
 					}
-					else break;
-					
-					
+					else break;	
 				}
 
 				else if(menuNum == 4) {
-					assignmentManager.viewassignments(assignInfo, score);
+					assignmentManager.viewAssignments();
 					if(assignmentManager.ifContinue() == 1) { 
 						continue;
 					}
 					else break;	
 					 }
 				
-				else break;
-				
+				else break;				
 			}
 		}
 	}
