@@ -126,10 +126,6 @@ public class Assignment {
 		String deadline = input.next();
 		this.setDeadline(deadline);		
 		
-//		System.out.print("Presentation Date : ");
-//		String date = input.next();
-//		this.setDate(date);
-		
 		System.out.print("Assignment Score : ");
 		double score = input.nextDouble();
 		this.setScore(score);
