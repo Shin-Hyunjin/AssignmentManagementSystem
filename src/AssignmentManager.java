@@ -37,7 +37,7 @@ public class AssignmentManager {
 				assignments.add(assignment);
 				break;
 			} 
-			else if(type == 2) {
+			else if(type == 3) {
 				assignment = new ExamSubstitutionTask(AssignmentType.ExamSubstitutionTask);
 				assignment.getUserInputInfoS(input);
 				assignments.add(assignment);
