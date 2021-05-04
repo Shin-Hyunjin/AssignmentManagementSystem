@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import assignment.Assignment;
+import assignment.AssignmentType;
+import assignment.ExamSubstitutionTask;
 import assignment.GroupProject;
 
 public class AssignmentManager {
@@ -20,7 +22,8 @@ public class AssignmentManager {
 			System.out.println("--- Add Assignments ---");
 			System.out.println("1 for Individual Work.");
 			System.out.println("2 for Group Project");
-			System.out.print("Select number for Assignment Type between 1 and 2 : ");
+			System.out.println("3 for Exam Substitution Task");
+			System.out.print("Select num 1, 2 or 3 for Assignment Type : ");
 			type = input.nextInt();
 			if(type == 1) {
 				assignment = new Assignment();
@@ -29,13 +32,19 @@ public class AssignmentManager {
 				break;
 			}
 			else if(type == 2) {
-				assignment = new GroupProject();
+				assignment = new GroupProject(AssignmentType.GroupProject);
+				assignment.getUserInputInfoS(input);
+				assignments.add(assignment);
+				break;
+			} 
+			else if(type == 2) {
+				assignment = new ExamSubstitutionTask(AssignmentType.ExamSubstitutionTask);
 				assignment.getUserInputInfoS(input);
 				assignments.add(assignment);
 				break;
 			}
 			else {
-				System.out.print("Please, Select number for Assignment Type between 1 and 2 : ");
+				System.out.print("Please, Select number for Assignment Type between 1 and 3 : ");
 			}
 		}
 	}
@@ -103,11 +112,11 @@ public class AssignmentManager {
 					String deadline = input.next();  
 					assignment.setDeadline(deadline);
 				}
-				else if(editNum==5) {
-					System.out.print("Input Presentation Date : "); 
-					String date = input.next();  
-					assignment.setDate(date);
-				}
+//				else if(editNum==5) {
+//					System.out.print("Input Presentation Date : "); 
+//					String date = input.next();  
+//					assignment.setDate(date);
+//				}
 				else {
 					System.out.print("Input Assignment Score : ");
 					double score = input.nextDouble();

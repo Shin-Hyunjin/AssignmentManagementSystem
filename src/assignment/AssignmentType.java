@@ -2,5 +2,6 @@ package assignment;
 
 public enum AssignmentType {
 	IndividualWork,
-	GroupProject
+	GroupProject,
+	ExamSubstitutionTask;
 }

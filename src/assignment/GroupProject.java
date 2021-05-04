@@ -4,6 +4,20 @@ import java.util.Scanner;
 
 public class GroupProject extends Assignment {
 	
+	protected String date="x";
+	
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public GroupProject(AssignmentType type) {	
+		this.type = type;
+	}
+
 	public void getUserInputInfoS(Scanner input) {
 		System.out.print("Subject Name : ");
 		String subject = input.next();
@@ -38,10 +52,33 @@ public class GroupProject extends Assignment {
 			else {			
 			}
 		}
-	
+			
 		System.out.print("Assignment Score : ");
 		double score = input.nextDouble();
 		this.setScore(score);
+	}
+	
+	public void printInfoS() {
+		String stype = "none";
+		switch(this.type) {
+		case IndividualWork:
+			stype = "Individual";
+			break;
+		case GroupProject:
+			stype = "Group";
+			break;
+		case ExamSubstitutionTask:
+		    stype = "Exam";
+			break;
+		default:
+		}
+		System.out.println("AssignmentType : " + stype);
+		System.out.println("Subject Name : " + this.subject);
+		System.out.println("Professor Name : " + this.professor);
+		System.out.println("Assignment Name : " + this.assignName);
+		System.out.println("Deadline : " + this.deadline);
+     	System.out.println("Presentation Date : " + this.date);
+		System.out.println("Assignment Score : " + this.score);	
 	}
 	
 }

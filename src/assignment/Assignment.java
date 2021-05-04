@@ -7,10 +7,15 @@ public class Assignment {
 	protected String professor;
 	protected String assignName;
 	protected String deadline;
-	protected String date="x";
+//	protected String date="x";
 	protected double score;
 
+
 	public Assignment() {	
+	}
+	
+	public Assignment(AssignmentType type) {	
+		this.type = type;
 	}
 
 	public Assignment(double score) {
@@ -22,6 +27,15 @@ public class Assignment {
 		this.assignName = assignName;
 	}
 
+	public Assignment(AssignmentType type,String subject,String professor,String assignName,String deadline, double score) {
+		this.type = type;
+		this.subject = subject;
+		this.professor = professor;
+		this.assignName = assignName;
+		this.deadline = deadline;	
+		this.score = score;
+	}
+	
 	public Assignment(String subject,String professor,String assignName,String deadline, double score) {
 		this.subject = subject;
 		this.professor = professor;
@@ -70,14 +84,6 @@ public class Assignment {
 		this.deadline = deadline;
 	}
 	
-	public String getDate() {
-		return date;
-	}
-
-	public void setDate(String date) {
-		this.date = date;
-	}
-
 	public double getScore() {
 		return score;
 	}
@@ -101,11 +107,25 @@ public class Assignment {
 	}
 
 	public void printInfoS() {
+		String stype = "none";
+		switch(this.type) {
+		case IndividualWork:
+			stype = "Individual";
+			break;
+		case GroupProject:
+			stype = "Group";
+			break;
+		case ExamSubstitutionTask:
+		    stype = "Exam";
+			break;
+		default:
+		}
+		System.out.println("AssignmentType : " + stype);
 		System.out.println("Subject Name : " + this.subject);
 		System.out.println("Professor Name : " + this.professor);
 		System.out.println("Assignment Name : " + this.assignName);
 		System.out.println("Deadline : " + this.deadline);
-		System.out.println("Presentation Date : " + this.date);
+//		System.out.println("Presentation Date : " + this.date);
 		System.out.println("Assignment Score : " + this.score);	
 	}
 	
