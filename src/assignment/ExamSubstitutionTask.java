@@ -37,11 +37,35 @@ public class ExamSubstitutionTask extends Assignment {
 		
 		System.out.println("Rate of reflection of Grades : ");
 		double ratio = input.nextDouble();
-        	
+        this.setRatio(ratio);
+		
 		System.out.print("Assignment Score : ");
 		double score = input.nextDouble();
 		this.setScore(score);
 	}
 	
-
+	public void printInfoS() {
+		String stype = "none";
+		switch(this.type) {
+		case IndividualWork:
+			stype = "Individual";
+			break;
+		case GroupProject:
+			stype = "Group";
+			break;
+		case ExamSubstitutionTask:
+		    stype = "Exam";
+			break;
+		default:
+		}
+		System.out.println("AssignmentType : " + stype);
+		System.out.println("Subject Name : " + this.subject);
+		System.out.println("Professor Name : " + this.professor);
+		System.out.println("Assignment Name : " + this.assignName);
+		System.out.println("Deadline : " + this.deadline);
+     	System.out.println("Rate of reflection of Grades : " + this.ratio);
+		System.out.println("Assignment Score : " + this.score);	
+	}	
 }
+	
+
