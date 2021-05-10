@@ -2,7 +2,7 @@ package assignment;
 
 import java.util.Scanner;
 
-public class GroupProject extends Assignment {
+public class GroupProject extends Assignment implements AssignmentInput {
 	
 	protected String date="x";
 	

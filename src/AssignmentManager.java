@@ -2,12 +2,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import assignment.Assignment;
+import assignment.AssignmentInput;
 import assignment.AssignmentType;
 import assignment.ExamSubstitutionTask;
 import assignment.GroupProject;
+import assignment.IndividualWork;
 
 public class AssignmentManager {
-	ArrayList<Assignment> assignments = new ArrayList<Assignment>();
+	ArrayList<AssignmentInput> assignments = new ArrayList<AssignmentInput>();
 	Scanner input;
 
 	AssignmentManager(Scanner input) {
@@ -16,7 +18,7 @@ public class AssignmentManager {
 
 	public void addAssignment() {
 		int type = 0;
-		Assignment assignment;
+		AssignmentInput assignmentInput;
 		while(type != 1 && type != 2) {
 			System.out.println("");
 			System.out.println("--- Add Assignments ---");
@@ -26,21 +28,21 @@ public class AssignmentManager {
 			System.out.print("Select num 1, 2 or 3 for Assignment Type : ");
 			type = input.nextInt();
 			if(type == 1) {
-				assignment = new Assignment();
-				assignment.getUserInputInfoS(input);
-				assignments.add(assignment);
+				assignmentInput = new IndividualWork(AssignmentType.IndividualWork);
+				assignmentInput.getUserInputInfoS(input);
+				assignments.add(assignmentInput);
 				break;
 			}
 			else if(type == 2) {
-				assignment = new GroupProject(AssignmentType.GroupProject);
-				assignment.getUserInputInfoS(input);
-				assignments.add(assignment);
+				assignmentInput = new GroupProject(AssignmentType.GroupProject);
+				assignmentInput.getUserInputInfoS(input);
+				assignments.add(assignmentInput);
 				break;
 			} 
 			else if(type == 3) {
-				assignment = new ExamSubstitutionTask(AssignmentType.ExamSubstitutionTask);
-				assignment.getUserInputInfoS(input);
-				assignments.add(assignment);
+				assignmentInput = new ExamSubstitutionTask(AssignmentType.ExamSubstitutionTask);
+				assignmentInput.getUserInputInfoS(input);
+				assignments.add(assignmentInput);
 				break;
 			}
 			else {
@@ -86,31 +88,31 @@ public class AssignmentManager {
 		System.out.println("Assignment Name : ");
 		String assignName = input.next();
 		for(int i=0; i<assignments.size(); i++) {
-			Assignment assignment = assignments.get(i);
+			AssignmentInput assignmentInput = assignments.get(i);
 			if(assignments.get(i).getAssignName().equals(assignName)) {
 
-				assignment.printinfoEdit();
+				assignmentInput.printinfoEdit();
 				int editNum = input.nextInt();
 
 				if (editNum==1) {
 					System.out.print("Input Subject Name : ");
 					String subject = input.next(); 
-					assignment.setSubject(subject);
+					assignmentInput.setSubject(subject);
 				}
 				else if(editNum==2) {
 					System.out.print("Input Professor Name : "); 
 					String professor = input.next(); 
-					assignment.setProfessor(professor);
+					assignmentInput.setProfessor(professor);
 				}
 				else if(editNum==3) {
 					System.out.print("Input Assignment Name : "); 
 					String assignmentName = input.next(); 
-					assignment.setAssignName(assignmentName);
+					assignmentInput.setAssignName(assignmentName);
 				}
 				else if(editNum==4) {
 					System.out.print("Input Deadline : "); 
 					String deadline = input.next();  
-					assignment.setDeadline(deadline);
+					assignmentInput.setDeadline(deadline);
 				}
 //				else if(editNum==5) {
 //					System.out.print("Input Presentation Date : "); 
@@ -120,7 +122,7 @@ public class AssignmentManager {
 				else {
 					System.out.print("Input Assignment Score : ");
 					double score = input.nextDouble();
-					assignment.setScore(score);
+					assignmentInput.setScore(score);
 				}
 			}
 		}

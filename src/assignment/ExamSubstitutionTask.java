@@ -2,7 +2,7 @@ package assignment;
 
 import java.util.Scanner;
 
-public class ExamSubstitutionTask extends Assignment {
+public class ExamSubstitutionTask extends Assignment implements AssignmentInput {
 	
 	protected double ratio;
 	
