@@ -1,9 +1,15 @@
 package assignment;
+import java.io.Serializable;
 import java.util.Scanner;
 
 import exception.DateFormatException;
 
-public abstract class Assignment implements AssignmentInput {
+public abstract class Assignment implements AssignmentInput, Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2029335262320866124L;
+	
 	protected AssignmentType type = AssignmentType.IndividualWork;
 	protected String subject;
 	protected String professor;
@@ -83,7 +89,7 @@ public abstract class Assignment implements AssignmentInput {
 	}
 
 	public void setDeadline(String deadline) throws DateFormatException {
-		if(!deadline.contains("-") && deadline.contentEquals("")) {
+		if(!deadline.contains(".") && deadline.contentEquals("")) {
 			throw new DateFormatException();
 		}
 		this.deadline = deadline;
@@ -94,7 +100,7 @@ public abstract class Assignment implements AssignmentInput {
 	}
 
 	public void setDate(String date) throws DateFormatException {
-		if(!deadline.contains("-") && deadline.contentEquals("")) {
+		if(!deadline.contains(".") && deadline.contentEquals("")) {
 			throw new DateFormatException();
 		}
 		this.date = date;
@@ -154,13 +160,13 @@ public abstract class Assignment implements AssignmentInput {
 	
 	public void setAssignDeadline(Scanner input) {
 		String deadline ="";
-		while (!deadline.contains("-")) {
+		while (!deadline.contains(".")) {
 			System.out.print("Input Deadline : "); 
 			deadline = input.next();  
 			try {
 				this.setDeadline(deadline);
 			} catch(DateFormatException e) {
-				System.out.println("Incorrect Date Format. Put the date that contains '-'.");
+				System.out.println("Incorrect Date Format. Put the date that contains '.'.");
 			}	
 		}
 	}
@@ -173,13 +179,13 @@ public abstract class Assignment implements AssignmentInput {
 	
 	public void setAssignPresentation(Scanner input) {
 		String date = "";
-		while (!date.contains("-")) {
+		while (!date.contains(".")) {
 			System.out.print("Input Presentation Date : "); 
 			date = input.next();  
 			try {
 				this.setDate(date);
 			} catch(DateFormatException e) {
-				System.out.println("Incorrect Date Format. Put the date that contains '-'.");
+				System.out.println("Incorrect Date Format. Put the date that contains '.'.");
 			}	
 		}	
 	}

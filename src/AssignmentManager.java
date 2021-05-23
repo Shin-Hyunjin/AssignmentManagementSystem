@@ -1,17 +1,22 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import assignment.Assignment;
 import assignment.AssignmentInput;
 import assignment.AssignmentType;
 import assignment.ExamSubstitutionTask;
 import assignment.GroupProject;
 import assignment.IndividualWork;
 
-public class AssignmentManager {
+public class AssignmentManager implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8282552683179764935L;
+	
 	ArrayList<AssignmentInput> assignments = new ArrayList<AssignmentInput>();
-	Scanner input;
+	transient Scanner input;
 
 	AssignmentManager(Scanner input) {
 		this.input = input;
@@ -59,13 +64,6 @@ public class AssignmentManager {
 				type = -1;
 			}
 		}
-	}
-
-	public int ifContinue() {
-		System.out.print("Continue? Input one number(YES : 1 / NO : 0): ");
-		int answer = input.nextInt();	
-
-		return answer;
 	}
 
 	public void submittedAssignment() {
@@ -129,15 +127,9 @@ public class AssignmentManager {
 					continue;
 				}
 
-				}
-				//				else if(editNum==5) {
-				//					System.out.print("Input Presentation Date : "); 
-				//					String date = input.next();  
-				//					assignment.setDate(date);
-				//				}
-
-				}
 			}
+		}
+	}
 
 	public void viewAssignments() {
 		for(int i=0; i<assignments.size(); i++) {
