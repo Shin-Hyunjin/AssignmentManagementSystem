@@ -1,8 +1,11 @@
+package manager;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import assignment.Assignment;
 import assignment.AssignmentInput;
 import assignment.AssignmentType;
 import assignment.ExamSubstitutionTask;
@@ -17,8 +20,11 @@ public class AssignmentManager implements Serializable {
 	
 	ArrayList<AssignmentInput> assignments = new ArrayList<AssignmentInput>();
 	transient Scanner input;
-
 	AssignmentManager(Scanner input) {
+		this.input = input;
+	}
+	
+	public void setScanner(Scanner input) {
 		this.input = input;
 	}
 
@@ -136,5 +142,13 @@ public class AssignmentManager implements Serializable {
 			assignments.get(i).printInfoS();
 			System.out.println("");
 		}
+	}
+	
+	public int size() {
+		return assignments.size();
+	}
+	
+	public AssignmentInput get(int index) {
+		return (Assignment) assignments.get(index);
 	}
 }

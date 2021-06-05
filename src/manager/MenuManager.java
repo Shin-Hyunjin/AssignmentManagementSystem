@@ -1,3 +1,4 @@
+package manager;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -6,25 +7,30 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import gui.WindowFrame;
 import log.EventLogger;
 
 public class MenuManager {
 	static EventLogger logger =new EventLogger("log.txt");
 
 	public static void main(String[] args) {
-		
 		Scanner input = new Scanner(System.in);
 		AssignmentManager assignmentManager = getObject("assignmentmanager.ser");		
 		if(assignmentManager == null) {
 			assignmentManager = new AssignmentManager(input); 
 		}
+		else {
+			assignmentManager.setScanner(input);
+		}
 
+		WindowFrame frame = new WindowFrame(assignmentManager);
 		selectMenu(input, assignmentManager);
 		putObject(assignmentManager, "assignmentmanager.ser");
 	}
 
 	public static void selectMenu(Scanner input, AssignmentManager assignmentManager) {
-		int menuNum = 0;
+		int menuNum = -1;
 
 		while(menuNum != 5) {
 			try {
@@ -50,7 +56,7 @@ public class MenuManager {
 					assignmentManager.viewAssignments();
 					logger.log("view a list of assignment");
 					break;		
-					
+
 				default:
 					continue;
 				}	
@@ -62,10 +68,9 @@ public class MenuManager {
 				}
 				menuNum = -1;
 			}
-
 		}
 	}
-	
+
 	public static void showMenu() {
 		System.out.println("");
 		System.out.println("*** Assignment Management System Menu ***");
@@ -76,15 +81,15 @@ public class MenuManager {
 		System.out.println("5. Exit");
 		System.out.print("Select one number between 1 - 5 : ");
 	}
-	
+
 	public static AssignmentManager getObject(String filename) {
 		AssignmentManager assignmentManager = null;
 		try {
 			FileInputStream file = new FileInputStream(filename);
 			ObjectInputStream in = new ObjectInputStream(file); 
-			
+
 			assignmentManager = (AssignmentManager) in.readObject();
-			
+
 			in.close();
 			file.close();
 		} catch (FileNotFoundException e) {
@@ -96,18 +101,18 @@ public class MenuManager {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return assignmentManager;
 	}
-	
+
 	public static void putObject(AssignmentManager assignmentManager, String filename) {
 		try {
 			FileOutputStream file = new FileOutputStream(filename);
 			ObjectOutputStream out = new ObjectOutputStream(file); 
-			
+
 			out.writeObject(assignmentManager);
 
-			
+
 			out.close();
 			file.close();
 		} catch (FileNotFoundException e) {

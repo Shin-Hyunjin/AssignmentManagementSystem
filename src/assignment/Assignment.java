@@ -1,4 +1,5 @@
 package assignment;
+
 import java.io.Serializable;
 import java.util.Scanner;
 

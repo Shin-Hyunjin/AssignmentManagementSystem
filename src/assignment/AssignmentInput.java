@@ -10,13 +10,21 @@ public interface AssignmentInput {
 	
 	public void setSubject(String subject);
 	
+	public String getSubject();
+	
 	public void setProfessor(String professor);
+	
+	public String getProfessor();
 	
 	public void setAssignName(String assignName);
 	
 	public void setDeadline(String deadline) throws DateFormatException;
 	
+	public String getDeadline();
+	
 	public void setScore(double score);
+	
+	public double getScore();
 	
 	public void getUserInputInfoS(Scanner input);
 	
