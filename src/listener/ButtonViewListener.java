@@ -22,7 +22,7 @@ public class ButtonViewListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		AssignmentViewer assignmentViewer = frame.getAssignmentViewer()
+		AssignmentViewer assignmentViewer = frame.getAssignmentViewer();
 		AssignmentManager assignmentManager = getObject("assignmentmanager.ser");	
 		assignmentViewer.setAssignmentManager(assignmentManager);
 		
