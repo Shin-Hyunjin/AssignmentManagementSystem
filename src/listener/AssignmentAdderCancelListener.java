@@ -8,20 +8,21 @@ import gui.AssignmentAdder;
 import gui.AssignmentViewer;
 import gui.WindowFrame;
 
-public class ButtonAddListener implements ActionListener {
+public class AssignmentAdderCancelListener implements ActionListener {
 	
 	WindowFrame frame; 
 
-	public ButtonAddListener(WindowFrame frame) {
+	public AssignmentAdderCancelListener(WindowFrame frame) {
 		this.frame = frame;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		frame.getContentPane().removeAll();
-		frame.getContentPane().add(frame.getAssignmentAdder());
+		frame.getContentPane().add(frame.getMenuSelection());
 		frame.revalidate();
 		frame.repaint();
+	
 	}
 
 }

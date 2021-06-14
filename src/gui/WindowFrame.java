@@ -16,7 +16,7 @@ public class WindowFrame extends JFrame {
 	public WindowFrame(	AssignmentManager assignmentManager) {
 		this.assignmentManager = assignmentManager;
 		this.menuSelection = new MenuSelection(this);
-		this.assignmentAdder = new AssignmentAdder(this);
+		this.assignmentAdder = new AssignmentAdder(this, this.assignmentManager);
 		this.assignmentViewer = new AssignmentViewer(this, this.assignmentManager);
 		
 		this.setSize(500, 300);
